@@ -1,4 +1,3 @@
-
 var scores, roundScore, activePlayer, dice;
 
 scores = [0, 0];
