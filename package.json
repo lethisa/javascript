@@ -1,13 +1,8 @@
 {
   "name": "javascript",
   "version": "1.0.0",
-  "description": "JavaScrip Documentation ",
+  "description": "Javascript Documentation",
   "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {
-    "eslint": "^4.15.0",
-    "eslint-plugin-react": "^7.5.1"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,13 +10,13 @@
     "type": "git",
     "url": "git+https://github.com/lethisa/javascript.git"
   },
-  "keywords": [
-    "javascript"
-  ],
   "author": "lethisa",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/lethisa/javascript/issues"
   },
-  "homepage": "https://github.com/lethisa/javascript#readme"
+  "homepage": "https://github.com/lethisa/javascript#readme",
+  "devDependencies": {
+    "eslint": "^4.16.0"
+  }
 }
