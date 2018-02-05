@@ -30,3 +30,10 @@ age = "thirty six";
 job = "driver";
 
 console.log(name + " is a " + age + " years old " + job + " ,is he married? " + isMarried);
+
+// get data from console
+lastName = prompt("What is the last name?");
+console.log(lastName);
+
+// alert box
+alert(name + " is a " + age + " years old " + job + " ,is he married? " + isMarried);
