@@ -10,11 +10,7 @@ module.exports = {
     },
     "rules": {
         "no-console":0,
-
-        "indent": [
-            "error",
-            "tab"
-        ],
+        "indent":0,
         "linebreak-style": [
             "error",
             "windows"

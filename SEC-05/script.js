@@ -1,7 +1,4 @@
-////////////////////////
-// lecture: operators //
-////////////////////////
-
+// lecture: operators
 var now = 2016;
 var birthYear = now - 26;
 // variable mutation

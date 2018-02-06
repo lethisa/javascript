@@ -1,4 +1,8 @@
-//lecture : variables
+////////////////////////
+//lecture : variables //
+////////////////////////
+
+
 //primitive javascript data type
 var name = "John";
 console.log(name);
@@ -12,7 +16,10 @@ console.log(age);
 var fullAge = false;
 console.log(fullAge);
 
-// lecture : variables 2
+///////////////////////////
+// lecture : variables 2 //
+///////////////////////////
+
 // type coercion - convert number to string
 console.log(name + age); // string
 console.log(age + age); // number
