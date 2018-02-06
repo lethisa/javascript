@@ -1,21 +1,22 @@
-// lecture: operators
-var now = 2016;
-var birthYear = now - 26;
-// variable mutation
-birthYear = now - 26 * 2; // precedents of operators
-console.log(birthYear);
+////////////////
+// STATEMENTS //
+////////////////
 
-// operator precedents use parenthesis/ grouping (...)
-var ageJohn = 30;
-var ageMark = 30;
+/*function someFun(par){
+  code => perform action
+}*/
 
-ageJohn = ageMark = (3 + 5) * 4 - 6;
-// ageJohn = ageMark = 26
-// ageJohn = 26
+/*if (x === 5){
+  do something
+}*/
 
-ageJohn++;
-//ageJohn = ageJohn + 1;
-ageMark *= 2;
-// ageMark = ageMark * 2;
-console.log(ageJohn);
-console.log(ageMark);
+////////////////
+// EXPRESSION //
+////////////////
+
+/*var someFun = function(par){
+  code => produce value
+}*/
+
+/*3 + 4;
+var x = 3;*/

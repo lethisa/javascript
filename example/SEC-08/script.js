@@ -1,21 +1,32 @@
-// lecture: operators
-var now = 2016;
-var birthYear = now - 26;
+/////////////////////////
+// OBJECT AND PROPERTI //
+/////////////////////////
+
+var john = { // => john is object
+  name: "John", // => properti
+  lastName: "Smith",
+  yearOfBirth: 1990,
+  job: "teacher",
+  isMarried: false
+};
+
+console.log(john);
+console.log(john.lastName);
+console.log(john["lastName"]);
+
+var x = "job";
+console.log(john[x]);
+
 // variable mutation
-birthYear = now - 26 * 2; // precedents of operators
-console.log(birthYear);
+john.lastName = "Miller";
+console.log(john["lastName"]);
 
-// operator precedents use parenthesis/ grouping (...)
-var ageJohn = 30;
-var ageMark = 30;
+// create object different method
+var jane = new Object();
+jane.name = "Jane";
+jane.lastName = "Smither";
+jane.age = 29;
+jane.job = "police";
+jane.isMarried = true;
 
-ageJohn = ageMark = (3 + 5) * 4 - 6;
-// ageJohn = ageMark = 26
-// ageJohn = 26
-
-ageJohn++;
-//ageJohn = ageJohn + 1;
-ageMark *= 2;
-// ageMark = ageMark * 2;
-console.log(ageJohn);
-console.log(ageMark);
+console.log(jane);
