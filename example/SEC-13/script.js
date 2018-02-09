@@ -20,7 +20,7 @@ var john = {
     console.log(2016 - this.yearOfBirth);
 
     function innerFunction () {
-      console.log(this); // +> refer to windows object because regular function
+      console.log(this); // => refer to windows object because regular function
     }
     innerFunction();
   }
@@ -33,7 +33,7 @@ var mike = {
   yearOfBirth: 1934
 };
 
-// method borroeing
+// method borrowing
 mike.calculateAges = john.calculateAges;
 
 mike.calculateAges();
