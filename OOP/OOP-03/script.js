@@ -12,8 +12,8 @@ console.log(b); // 23 => just copy varibale b, not reference anything
 
 // object
 var obj1 = {
-  name:"john",
-  age:26
+  name: "john",
+  age: 26
 };
 
 var obj2 = obj1;
@@ -25,10 +25,10 @@ console.log(obj2.age); // 30
 var age = 27;
 var obj = {
   name: "lethisa",
-  city:"jakarta"
+  city: "jakarta"
 };
 
-function change (a, b) {
+function change(a, b) {
   a = 30; // not change anything
   b.city = "US"; // point reference to object
 }
