@@ -1,41 +1,40 @@
-////////////////////////
-// FUNCTION ARGUMENTS //
-////////////////////////
+/////////////////////
+// BIND-CALL-APPLY //
+/////////////////////
 
-var years = [1990, 1965, 1937, 2005, 1998];
-
-
-function arrayCalc(arr, fn) {
-  var arrRes = [];
-  for (var i = 0; i < arr.length; i++) {
-    arrRes.push(fn(arr[i]));
+var john = {
+  name: "John",
+  age: 26,
+  job: "teacher",
+  presentation: function(style, timeOfDay) {
+    if (style === "formal") {
+      console.log("Good " +
+        timeOfDay + ", Ladies and gentlemen! Im " +
+        this.name + " Im a " +
+        this.job + " and Im " +
+        this.age + " years old");
+    } else if (style === "friendly") {
+      console.log("Hey! What is up? Im " +
+        this.name + " Im a " +
+        this.job + " and Im " +
+        this.age + " years old. Have a nice " +
+        timeOfDay);
+    }
   }
-  return arrRes;
-}
+};
 
-// callback function
-function calculateAge(el) {
-  return 2016 - el;
-}
+var emily = {
+  name: "Emily",
+  age:35,
+  job:"designer"
+};
 
-// callback function
-function isFullAge(el) {
-  return el >= 18;
-}
-
-// callback function
-function maxHeartRate(el) {
-  if (el >= 18 && el <= 81) {
-    return Math.round(206.9 - (0.67 * el));
-  }
-  return -1;
-}
-
-var ages = arrayCalc(years, calculateAge);
-console.log(ages);
-
-var fullAges = arrayCalc(ages, isFullAge);
-console.log(fullAges);
-
-var rates = arrayCalc(ages, maxHeartRate);
-console.log(rates);
+john.presentation("formal","morning");
+// method borrowing - call
+john.presentation.call(emily, "friendly","afternoon");
+// apply - work in array
+john.presentation.apply(emily,["friendly","evening"]);
+// bind, like call but bind dont immediately call function - store
+var johnFriendly = john.presentation.bind(john, "friendly");
+johnFriendly("morning");
+johnFriendly("night");
