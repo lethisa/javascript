@@ -3,44 +3,44 @@
 /////////////////////
 
 var john = {
-  name: "John",
+  name: 'John',
   age: 26,
-  job: "teacher",
+  job: 'teacher',
   presentation: function(style, timeOfDay) {
-    if (style === "formal") {
-      console.log("Good " +
-        timeOfDay + ", Ladies and gentlemen! Im " +
-        this.name + " Im a " +
-        this.job + " and Im " +
-        this.age + " years old");
-    } else if (style === "friendly") {
-      console.log("Hey! What is up? Im " +
-        this.name + " Im a " +
-        this.job + " and Im " +
-        this.age + " years old. Have a nice " +
+    if (style === 'formal') {
+      console.log('Good ' +
+        timeOfDay + ', Ladies and gentlemen! Im ' +
+        this.name + ' Im a ' +
+        this.job + ' and Im ' +
+        this.age + ' years old');
+    } else if (style === 'friendly') {
+      console.log('Hey! What is up? Im ' +
+        this.name + ' Im a ' +
+        this.job + ' and Im ' +
+        this.age + ' years old. Have a nice ' +
         timeOfDay);
     }
   }
 };
 
 var emily = {
-  name: "Emily",
+  name: 'Emily',
   age:35,
-  job:"designer"
+  job:'designer'
 };
 
-john.presentation("formal","morning");
+john.presentation('formal','morning');
 // method borrowing - call
-john.presentation.call(emily, "friendly","afternoon");
+john.presentation.call(emily, 'friendly','afternoon');
 // apply - work in array
-john.presentation.apply(emily,["friendly","evening"]);
+john.presentation.apply(emily,['friendly','evening']);
 // bind, like call but bind dont immediately call function - store
-var johnFriendly = john.presentation.bind(john, "friendly");
-johnFriendly("morning");
-johnFriendly("night");
+var johnFriendly = john.presentation.bind(john, 'friendly');
+johnFriendly('morning');
+johnFriendly('night');
 
-var emilyFormal = john.presentation.bind(emily,"formal");
-emilyFormal("afternoon");
+var emilyFormal = john.presentation.bind(emily,'formal');
+emilyFormal('afternoon');
 
 // example ============================================
 var years = [1990, 1965, 1937, 2005, 1998];

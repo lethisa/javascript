@@ -33,11 +33,10 @@ var budgetController = (function() {
       } else {
         ID = 0;
       }
-
       // create new item based on 'nc' or 'exp' type
-      if (type === "exp") {
+      if (type === 'exp') {
         newItem = new Expense(ID, des, val);
-      } else if (type === "inc") {
+      } else if (type === 'inc') {
         newItem = new Income(ID, des, val);
       }
       // push it into our data structure
@@ -55,10 +54,10 @@ var UIController = (function() {
 
   // store class variable
   var DOMstring = {
-    inputType: ".add__type",
-    inputDescription: ".add__description",
-    inputValue: ".add__value",
-    inputBtn: ".add__btn"
+    inputType: '.add__type',
+    inputDescription: '.add__description',
+    inputValue: '.add__value',
+    inputBtn: '.add__btn'
   };
 
   return {
@@ -68,6 +67,12 @@ var UIController = (function() {
         description: document.querySelector(DOMstring.inputDescription).value,
         value: document.querySelector(DOMstring.inputValue).value
       };
+    },
+    addListItem: function(obj, type) {
+      // create HTML string eith placeholder text
+      '<div class="item clearfix" id="income-0"><div class="item__description">Salary</div><div class = "right clearfix" ><div class = "item__value"> +2, 100.00 </div><div class = "item__delete" > < button class = "item__delete--btn" ><i class = "ion-ios-close-outline" > < /i></button > < /div></div > < /div>';
+      // replace placeholder text with some actual data
+      // insert the html into the DOM
     },
     getDOMstrings: function() { // => public method
       return DOMstring;
@@ -82,8 +87,8 @@ var controller = (function(budgetCtrl, UICtrl) {
   var setupEventListeners = function() {
     var DOM = UICtrl.getDOMstrings();
     // => event listener
-    document.querySelector(DOM.inputBtn).addEventListener("click", ctrlAddItem);
-    document.addEventListener("keypress", function(event) {
+    document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
+    document.addEventListener('keypress', function(event) {
       if (event.keyCode === 13 || event.which === 13) {
         ctrlAddItem();
       }

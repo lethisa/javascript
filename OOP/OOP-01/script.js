@@ -3,9 +3,9 @@
 //////////////////////////
 
 /*var john = { // => regular creation object
-  name: "john",
+  name: 'john',
   yearOfBirth: 1990,
-  job: "teacher"
+  job: 'teacher'
 };
 console.log(john);*/
 
@@ -25,14 +25,14 @@ Person.prototype.calculateAge =
     console.log(2016 - this.yearOfBirth);
   };
 // variable inheritance
-Person.prototype.lastName = "Smith";
+Person.prototype.lastName = 'Smith';
 
 ////////////////////// create john object - instance
-var jane = new Person("Jane", 1991, "police"); // new - new empty object created
+var jane = new Person('Jane', 1991, 'police'); // new - new empty object created
 jane.calculateAge();
-var mike = new Person("Mike", 1993, "designer");
+var mike = new Person('Mike', 1993, 'designer');
 mike.calculateAge();
-var mark = new Person("Mark", 1967, "sailor");
+var mark = new Person('Mark', 1967, 'sailor');
 mark.calculateAge();
 
 console.log(jane.lastName);

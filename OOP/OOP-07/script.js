@@ -4,7 +4,7 @@
 
 // inner function has always access to the variable and parameters of its outer function, even after the outer function has returned
 function retirement(retirementAge) {
-  var a = " years left ubtil retirement";
+  var a = ' years left ubtil retirement';
   return function(yearOfBirth) {
     var age = 2016 - yearOfBirth;
     console.log((retirementAge - age) + a);
@@ -27,14 +27,14 @@ retirementIceland(1997);
 // apply for previous lesson
 function interviewQuestion(job) {
   return function(name) {
-    if (job === "designer") {
-      console.log("Hello " + name + "what do you do?");
-    } else if (job === "teacher") {
-      console.log("What subject do you teach, " + name);
+    if (job === 'designer') {
+      console.log('Hello ' + name + 'what do you do?');
+    } else if (job === 'teacher') {
+      console.log('What subject do you teach, ' + name);
     } else {
-      console.log("Hello "+ name + "what do you do?");
+      console.log('Hello '+ name + 'what do you do?');
     }
   };
 }
 
-interviewQuestion("teacher")("john");
+interviewQuestion('teacher')('john');

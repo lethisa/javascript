@@ -13,7 +13,7 @@ function calculateAge(year) {
 }
 
 var john = {
-  name: "john",
+  name: 'john',
   yearOfBirth: 1999,
   calculateAges: function() {
     console.log(this);
@@ -29,7 +29,7 @@ var john = {
 john.calculateAges();
 
 var mike = {
-  name: "Mike",
+  name: 'Mike',
   yearOfBirth: 1934
 };
 

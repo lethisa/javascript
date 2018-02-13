@@ -20,12 +20,12 @@ function yearUntilRetirement(name, year) {
   var retirement = 65 - age;
 
   if (retirement >= 0) {
-    console.log(name + " retires in " + retirement + " years");
+    console.log(name + ' retires in ' + retirement + ' years');
   } else {
-    console.log(name + " is already retired");
+    console.log(name + ' is already retired');
   }
 
 }
 
-yearUntilRetirement("John", 1990);
-yearUntilRetirement("Mary", 1910);
+yearUntilRetirement('John', 1990);
+yearUntilRetirement('Mary', 1910);

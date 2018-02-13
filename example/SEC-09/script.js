@@ -4,12 +4,12 @@
 
 // version 1
 var john = {
-  name: "John",
-  lastName: "Smith",
+  name: 'John',
+  lastName: 'Smith',
   yearOfBirth: 1990,
-  job: "teacher",
+  job: 'teacher',
   isMarried: false,
-  family: ["Jane", "Mark", "Bob"],
+  family: ['Jane', 'Mark', 'Bob'],
 
   calculateAge: function() { // method => function in object
     return 2016 - this.yearOfBirth; // this refers to object
@@ -29,12 +29,12 @@ console.log(john);
 
 // version 2
 var jane = {
-  name: "Jane",
-  lastName: "Smothie",
+  name: 'Jane',
+  lastName: 'Smothie',
   yearOfBirth: 1980,
-  job: "police",
+  job: 'police',
   isMarried: true,
-  family: ["Janes", "Marker", "Boby"],
+  family: ['Janes', 'Marker', 'Boby'],
 
   calculateAge: function() {
     this.age = 2016 - this.yearOfBirth;

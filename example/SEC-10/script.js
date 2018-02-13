@@ -7,7 +7,7 @@ for (var i = 0; i < 10; i++) { // initial - condition - counter
   console.log(i);
 }
 
-var names = ["John", "Jane", "Mark", "Bob", "Kart"];
+var names = ['John', 'Jane', 'Mark', 'Bob', 'Kart'];
 for (var x = 0; x < names.length; x++) { // length => number
   console.log(names[x]);
 }

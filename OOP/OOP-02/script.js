@@ -9,19 +9,19 @@ var personProto = {
 };
 
 var john = Object.create(personProto);
-john.name = "John";
+john.name = 'John';
 john.yearOfBirth = 1990;
-john.job = "tacher";
+john.job = 'tacher';
 
 var jane = Object.create(personProto, {
   name: {
-    value: "Jane"
+    value: 'Jane'
   },
   yearOfBirth: {
     value: 1968
   },
   job: {
-    value: "designer"
+    value: 'designer'
   }
 });
 console.log(jane);
