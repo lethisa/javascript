@@ -7,10 +7,27 @@ var budgetController = (function() {
     this.description = description;
     this.value = value;
   };
+
   var Income = function(id, description, value) {
     this.id = id;
     this.description = description;
     this.value = value;
+  };
+  // data structure
+  var data = {
+    allItems: {
+      exp: [],
+      inc: []
+    },
+    totals: {
+      exp: 0,
+      inc: 0
+    }
+  };
+  return{
+    addItem: function(type, des, val){
+
+    }
   };
 
 })();
