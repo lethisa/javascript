@@ -4,8 +4,6 @@ var budgetController = (function() {
 
 })();
 
-
-
 ////////////////////////////////////////////////////// UI CONTROLLER
 
 var UIController = (function() {
@@ -19,14 +17,14 @@ var UIController = (function() {
   };
 
   return {
-    getInput: function() {
+    getInput: function() { // => private method get value
       return {
         type: document.querySelector(DOMstring.inputType).value, // will be either inc or exp
         description: document.querySelector(DOMstring.inputDescription).value,
         value: document.querySelector(DOMstring.inputValue).value
       };
     },
-    getDOMstrings: function() {
+    getDOMstrings: function() { // => public method
       return DOMstring;
     }
   };
@@ -38,8 +36,8 @@ var controller = (function(budgetCtrl, UICtrl) {
 
   var setupEventListeners = function() {
     var DOM = UICtrl.getDOMstrings();
+    // => event listener
     document.querySelector(DOM.inputBtn).addEventListener("click", ctrlAddItem);
-
     document.addEventListener("keypress", function(event) {
       if (event.keyCode === 13 || event.which === 13) {
         ctrlAddItem();
@@ -48,17 +46,16 @@ var controller = (function(budgetCtrl, UICtrl) {
   };
 
   var ctrlAddItem = function() {
-    // 1. get the field input data
+    // get the field input data
     var input = UICtrl.getInput();
 
-    // 2. add the item to the budget controller
-    // 3. add the item to the ui
-    // 4. calculate the budgetCtrl
-    // 5. display the budget on the ui
+    // add the item to the budget controller
+    // add the item to the ui
+    // calculate the budgetCtrl
+    // display the budget on the ui
   };
   return {
-    init: function() {
-      console.log("START");
+    init: function() { // => public method for event listener
       setupEventListeners();
     }
   };
