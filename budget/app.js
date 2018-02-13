@@ -23,4 +23,8 @@ document.querySelector(".add__btn").addEventListener("click", function() {
     // 5. display the budget on the ui
 });
 
+document.addEventListener("keypress", function(event) {
+console.log(event);
+});
+
 })(budgetController, UIController);
