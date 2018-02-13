@@ -1,19 +1,28 @@
 ////////////////////////////////////////////////////// BUDGET CONTROLLER
 
 var budgetController = (function() {
-  // function constructor
+  // function constructor expenses
   var Expense = function(id, description, value) {
     this.id = id;
     this.description = description;
     this.value = value;
   };
-
+  // function constructor income
   var Income = function(id, description, value) {
     this.id = id;
     this.description = description;
     this.value = value;
   };
-  // data structure
+  // method calculate total
+  var calculateTotal = function(type) {
+    var sum = 0;
+    data.allItems[type].forEach(function(cur) {
+      sum = sum + cur.value;
+    });
+    data.totals[type] = sum;
+  };
+
+  // data structure for income, expense, percentage, budget
   var data = {
     allItems: {
       exp: [],
@@ -22,10 +31,12 @@ var budgetController = (function() {
     totals: {
       exp: 0,
       inc: 0
-    }
+    },
+    budget: 0,
+    percentage: -1
   };
   return {
-    addItem: function(type, des, val) {
+    addItem: function(type, des, val) { // => global method add item
       var newItem, ID;
       // create new id
       if (data.allItems[type].length > 0) {
@@ -43,9 +54,29 @@ var budgetController = (function() {
       data.allItems[type].push(newItem);
       // return the new element
       return newItem;
+    },
+    calculateBudget: function() {
+      // calculate total income and expense
+      calculateTotal('exp');
+      calculateTotal('inc');
+      // calculate the budget = incomec - expense
+      data.budget = data.totals.inc - data.totals.exp;
+      // calculate the percentage of income that we spent
+      if (data.totals.inc > 0) {
+        data.percentage = Math.round((data.totals.exp / data.totals.inc) * 100);
+      } else {
+        data.percentage = -1;
+      }
+    },
+    getBudget: function() {
+      return {
+        budget: data.budget,
+        totalInc: data.totals.inc,
+        totalExp: data.totals.exp,
+        percentage: data.percentage
+      };
     }
   };
-
 })();
 
 ////////////////////////////////////////////////////// UI CONTROLLER
@@ -67,7 +98,7 @@ var UIController = (function() {
       return {
         type: document.querySelector(DOMstring.inputType).value, // will be either inc or exp
         description: document.querySelector(DOMstring.inputDescription).value,
-        value: document.querySelector(DOMstring.inputValue).value
+        value: parseFloat(document.querySelector(DOMstring.inputValue).value)
       };
     },
     addListItem: function(obj, type) {
@@ -89,7 +120,7 @@ var UIController = (function() {
 
     },
     clearFields: function() {
-      var fields,fieldsArr;
+      var fields, fieldsArr;
 
       fields = document.querySelectorAll(DOMstring.inputDescription + ',' + DOMstring.inputValue);
       fieldsArr = Array.prototype.slice.call(fields);
@@ -119,18 +150,32 @@ var controller = (function(budgetCtrl, UICtrl) {
     });
   };
 
+  var updateBudget = function() {
+    // calculate the budgetCtrl
+    budgetCtrl.calculateBudget();
+    // return the budget
+    var budget = budgetCtrl.getBudget();
+    // display the budget on the ui
+    console.log(budget);
+
+  };
+
   var ctrlAddItem = function() {
     var input, newItem;
     // get the field input data
     input = UICtrl.getInput();
-    // add the item to the budget controller
-    newItem = budgetCtrl.addItem(input.type, input.description, input.value);
-    // add the item to the ui
-    UICtrl.addListItem(newItem, input.type);
-    // clear the fields
-    UICtrl.clearFields();
-    // calculate the budgetCtrl
-    // display the budget on the ui
+    if (input.description !== '' && !isNaN(input.value) && input.value > 0) {
+      // add the item to the budget controller
+      newItem = budgetCtrl.addItem(input.type, input.description, input.value);
+      // add the item to the ui
+      UICtrl.addListItem(newItem, input.type);
+      // clear the fields
+      UICtrl.clearFields();
+      // calculate and update budget
+      updateBudget();
+    }
+
+
   };
   return {
     init: function() { // => public method for event listener
