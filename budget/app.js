@@ -10,6 +10,14 @@ var budgetController = (function() {
 
 var UIController = (function() {
 
+  return {
+    getInput: function() {
+
+      var type = document.querySelector(".add__type").value; // will be either inc or exp
+      var description = document.querySelector(".add__description").value;
+      var value = document.querySelector(".add__value").value;
+    }
+  };
 })();
 
 ////////////////////////////////////////////////////// GLOBAL APP CONTROLLER
@@ -22,7 +30,6 @@ var controller = (function(budgetCtrl, UICtrl) {
     // 3. add the item to the ui
     // 4. calculate the budgetCtrl
     // 5. display the budget on the ui
-    console.log("HI");
   };
 
   document.querySelector(".add__btn").addEventListener("click", ctrlAddItem);
