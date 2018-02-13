@@ -28,7 +28,12 @@ var budgetController = (function() {
     addItem: function(type, des, val) {
       var newItem, ID;
       // create new id
-      ID = data.allItems[type][data.allItems[type].length - 1].id + 1; // => last ID + 1
+      if (data.allItems[type].length > 0) {
+        ID = data.allItems[type][data.allItems[type].length - 1].id + 1; // => last ID + 1
+      } else {
+        ID = 0;
+      }
+
       // create new item based on 'nc' or 'exp' type
       if (type === "exp") {
         newItem = new Expense(ID, des, val);
@@ -39,6 +44,9 @@ var budgetController = (function() {
       data.allItems[type].push(newItem);
       // return the new element
       return newItem;
+    },
+    testing: function() {
+      console.log(data);
     }
   };
 
