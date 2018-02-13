@@ -1,2 +1,2 @@
 # javascript
-JavaScript Documentation
+- JavaScript Documentation
