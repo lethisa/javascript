@@ -1,36 +1,22 @@
-////////////////////////////////////////////////////// DATA MODULE
+////////////////////////////////////////////////////// BUDGET CONTROLLER
 
-var budgetController = (function() { // => IIFE
-  var x = 23;
-  var add = function(a) {
-    return x + a;
-  };
-  return {
-    publicTest: function(b) { // => can access outside var because closure
-      return add(b);
-    }
-  };
+var budgetController = (function() {
+
 })();
 
-// budgetController.publicTest(6); // => tes public module
 
-////////////////////////////////////////////////////// UI MODULE
+
+////////////////////////////////////////////////////// UI CONTROLLER
 
 var UIController = (function() {
 
 })();
 
-////////////////////////////////////////////////////// CONTROLLER
+////////////////////////////////////////////////////// GLOBAL APP CONTROLLER
 
-var controller = (function(budgetCtrl, UICtrl) { // => control another separate module
-
-var z = budgetCtrl.publicTest(6);
-return {
-  anotherPublic: function(){
-    console.log(z);
-  }
-};
+var controller = (function(budgetCtrl, UICtrl) {
+document.querySelector(".add__btn").addEventListener("click", function() {
+console.log("btn clicked");
+});
 
 })(budgetController, UIController);
-
-// controller.anotherPublic(); // => access public method
