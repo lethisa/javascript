@@ -21,7 +21,6 @@ var budgetController = (function() {
     });
     data.totals[type] = sum;
   };
-
   // data structure for income, expense, percentage, budget
   var data = {
     allItems: {
@@ -82,7 +81,6 @@ var budgetController = (function() {
 ////////////////////////////////////////////////////// UI CONTROLLER
 
 var UIController = (function() {
-
   // store class variable
   var DOMstring = {
     inputType: '.add__type',
@@ -90,9 +88,12 @@ var UIController = (function() {
     inputValue: '.add__value',
     inputBtn: '.add__btn',
     incomeContainer: '.income__list',
-    expensesContainer: '.expenses__list'
+    expensesContainer: '.expenses__list',
+    budgetLabel: '.budget__value',
+    incomeLabel: 'budget__income--value',
+    expensesLabel: 'budget__expenses--value',
+    percentageLabel: '.budget__expenses--percentage'
   };
-
   return {
     getInput: function() { // => private method get value
       return {
@@ -117,7 +118,6 @@ var UIController = (function() {
       newHTML = newHTML.replace('%value%', obj.value);
       // insert the html into the DOM
       document.querySelector(element).insertAdjacentHTML('beforeend', newHTML);
-
     },
     clearFields: function() {
       var fields, fieldsArr;
@@ -128,6 +128,12 @@ var UIController = (function() {
         current.value = '';
       });
       fieldsArr[0].focus();
+    },
+    displayBudget: function(obj) {
+      document.querySelector(DOMstring.budgetLabel).textContent = obj.budget;
+      document.querySelector(DOMstring.incomeLabel).textContent = obj.totalInc;
+      document.querySelector(DOMstring.expensesLabel).textContent = obj.totalExp;
+      document.querySelector(DOMstring.percentageLabel).textContent = obj.percentage;
     },
     getDOMstrings: function() { // => public method
       return DOMstring;
@@ -156,8 +162,7 @@ var controller = (function(budgetCtrl, UICtrl) {
     // return the budget
     var budget = budgetCtrl.getBudget();
     // display the budget on the ui
-    console.log(budget);
-
+    UICtrl.displayBudget(budget);
   };
 
   var ctrlAddItem = function() {
@@ -174,8 +179,6 @@ var controller = (function(budgetCtrl, UICtrl) {
       // calculate and update budget
       updateBudget();
     }
-
-
   };
   return {
     init: function() { // => public method for event listener
@@ -186,4 +189,5 @@ var controller = (function(budgetCtrl, UICtrl) {
 })(budgetController, UIController);
 
 ////////////////////////////////////////////////////// INITIALIZATION
+
 controller.init(); // => public method call event listener
