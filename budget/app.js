@@ -8,7 +8,7 @@ var budgetController = (function() {
     this.value = value;
     this.percentage = -1;
   };
-  // prototype
+  // prototype - method calcPercentages
   Expense.prototype.calcPercentages = function(totalIncome) {
     if (totalIncome > 0) {
       this.percentage = Math.round((this.value / totalIncome) * 100);
@@ -16,6 +16,7 @@ var budgetController = (function() {
       this.percentage = -1;
     }
   };
+  // prototype - method getPercentage
   Expense.prototype.getPercentage = function() {
     return this.percentage;
   };
@@ -46,6 +47,7 @@ var budgetController = (function() {
     budget: 0,
     percentage: -1
   };
+  // return value to access from eksternal
   return {
     addItem: function(type, des, val) { // => global method add item
       var newItem, ID;
@@ -92,13 +94,11 @@ var budgetController = (function() {
         data.percentage = -1;
       }
     },
-
     calculatePercentages: function() {
       data.allItems.exp.forEach(function(cur) {
         cur.calcPercentages(data.totals.inc);
       });
     },
-
     getPercentages: function() {
       var allPerc = data.allItems.exp.map(function(cur) {
         return cur.getPercentage();
@@ -136,6 +136,7 @@ var UIController = (function() {
     expensesPerLabel: '.item__percentage',
     dateLabel: '.budget__title--month'
   };
+  
   var formatNumber = function(num, type) {
     var numSplit, int, dec;
     // +/- before formatNumber
@@ -155,6 +156,7 @@ var UIController = (function() {
 
     return (type === 'exp' ? '-' : '+') + ' ' + int + '.' + dec;
   };
+
   var nodeListForEach = function(list, callback) {
     for (var i = 0; i < list.length; i++) {
       callback(list[i], i);

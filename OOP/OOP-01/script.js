@@ -14,9 +14,9 @@ var Person = function(name, yearOfBirth, job) {
   this.name = name; // => parameter from function
   this.yearOfBirth = yearOfBirth;
   this.job = job;
-    /*this.calculateAge = function() {
-      console.log(2016 - this.yearOfBirth);
-    };*/
+  /*this.calculateAge = function() {
+    console.log(2016 - this.yearOfBirth);
+  };*/
 };
 ////////////////////// inheritance object
 // method inheritance
