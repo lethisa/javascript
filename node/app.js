@@ -27,6 +27,9 @@ const _ = require('lodash');
 // var filteredArray = _.uniq(['lethisa',1,'lethisa',1,2,3,4]);
 // console.log(filteredArray);
 
+// yargs => build interactive command line tools by parsing arguments and generating an elegant user interface
+const yargs = require('yargs');
+
 // original line
 /*fs.appendFile('greetings.txt','Hello World !');*/
 
@@ -51,20 +54,27 @@ const _ = require('lodash');
 // ============================ MAIN SCRIPT
 // argv => argument vector
 var command = process.argv[2];
+// create yargs var
+const argv = yargs.argv;
+
 // get argv - command line argument
 // console.log(process.argv);
 console.log('command: ', command);
+// console.log('process', process.argv);
+// console.log('yargs',argv);
 
 if (command === 'add') {
-  console.log('adding new note');
+  // console.log('adding new note');
+  notes.addNote(argv.title, argv.body);
 } else if (command === 'list') {
-  console.log('listing all note');
+  // console.log('listing all note');
+  notes.getAll();
 } else if (command === 'read') {
-  console.log('reading note');
+  // console.log('reading note');
+  notes.getNote(argv.title);
 } else if (command === 'remove') {
-  console.log('removing note');
+  // console.log('removing note');
+  notes.removeNote(argv.title);
 } else {
   console.log('command:  not recognized');
 }
-
-// yargs => build interactive command line tools by parsing arguments and generating an elegant user interface
