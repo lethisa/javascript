@@ -30,4 +30,21 @@ $(document).ready(function() {
     });
   });
 
+  // set attribute
+  $('#b6').click(function(){
+    $('#w3s').attr('href','https://www.cecakit.com');
+  });
+
+  // set multiple attribute
+  $('#b7').html(function(){
+    $('#w3s-multi').attr({'href' : 'https://www.cecakit.com', 'title' : 'cecakit'});
+  });
+
+  // set attribute with callback
+  $('#b8').click(function(){
+    $('#w3s-call').attr('href', function(i, originValue){
+      return originValue + '/jquery';
+    });
+  });
+
 });
