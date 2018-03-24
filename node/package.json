@@ -1,0 +1,20 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "node project",
+  "main": "app.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lethisa/javascript.git"
+  },
+  "author": "lethisa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lethisa/javascript/issues"
+  },
+  "homepage": "https://github.com/lethisa/javascript#readme",
+  "dependencies": {
+    "lodash": "^4.17.5"
+  }
+}

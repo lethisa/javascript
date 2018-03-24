@@ -13,7 +13,15 @@ var res = notes.addNote();
 console.log(res);
 // calling function add from notes.js
 console.log('Result: ' + notes.add(9, -2));
-
+// load lodash module
+const _ = require('lodash');
+// using lodash library
+// _.isString
+console.log(_.isString(true));
+console.log(_.isString('lethisa'));
+// _.uniq
+var filteredArray = _.uniq(['lethisa',1,'lethisa',1,2,3,4]);
+console.log(filteredArray);
 // original line
 /*fs.appendFile('greetings.txt','Hello World !');*/
 
