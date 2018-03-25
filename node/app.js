@@ -69,9 +69,7 @@ if (command === 'add') {
   var note = notes.addNote(argv.title, argv.body);
   if (note) {
     console.log('note created');
-    console.log('--');
-    console.log(`title: ${note.title}`);
-    console.log(`body: ${note.body}`);
+    notes.logNote(note);
   } else {
     console.log('note title taken');
   }
@@ -80,7 +78,13 @@ if (command === 'add') {
   notes.getAll();
 } else if (command === 'read') {
   // console.log('reading note');
-  notes.getNote(argv.title);
+  note = notes.getNote(argv.title);
+  if (note) {
+    console.log('note found');
+    notes.logNote(note);
+  } else {
+    console.log('note not found');
+  }
 } else if (command === 'remove') {
   // console.log('removing note');
   var noteRemoved = notes.removeNote(argv.title);

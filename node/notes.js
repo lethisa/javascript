@@ -40,6 +40,7 @@ var saveNotes = (notes) => {
 
 /////////////////////////////////////////////////////////// MAIN SCRIPT
 
+///////////////////////////// write
 var addNote = (title, body) => {
   // console.log('adding note', title, body);
   var notes = fetchNotes();
@@ -75,10 +76,12 @@ var addNote = (title, body) => {
   }
 };
 
+///////////////////////////// list
 var getAll = () => {
   console.log('getting all notes');
 };
 
+///////////////////////////// remove
 var removeNote = (title) => {
   // fetch notes
   var notes = fetchNotes();
@@ -90,16 +93,27 @@ var removeNote = (title) => {
   return notes.length !== filterNotes.length;
 };
 
+///////////////////////////// read
 var getNote = (title) => {
-  console.log('getting note', title);
+  var notes = fetchNotes();
+  var filterNotes = notes.filter((note) => note.title === title);
+  return filterNotes[0];
 };
 
 /////////////////////////////////////////////////////////// MODULE
+
+var logNote = (note) => {
+  console.log('--');
+  console.log(`title: ${note.title}`);
+  console.log(`body: ${note.body}`);
+};
+
 
 module.exports = {
   // in ES6 addNote: addNote
   addNote,
   getAll,
   getNote,
-  removeNote
+  removeNote,
+  logNote
 };
