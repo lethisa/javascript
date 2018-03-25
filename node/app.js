@@ -55,8 +55,33 @@ const yargs = require('yargs');
 // argv => argument vector
 // var command = process.argv[2];
 
+const titleOptions = {
+  describe: 'title of note',
+  demand: true,
+  alias: 't'
+};
+
+const bodyOptions = {
+  describe: 'content body',
+  demand: true,
+  alias: 'b'
+};
+
 // create yargs var
-const argv = yargs.argv;
+const argv = yargs
+  .command('add', 'add a new note', {
+    title: titleOptions,
+    body: bodyOptions
+  })
+  .command('list', 'list all notes')
+  .command('read', 'read a note', {
+    title: titleOptions
+  })
+  .command('remove', 'remove a note', {
+    title: titleOptions
+  })
+  .help()
+  .argv;
 var command = argv._[0];
 // get argv - command line argument
 // console.log(process.argv);
@@ -75,7 +100,9 @@ if (command === 'add') {
   }
 } else if (command === 'list') {
   // console.log('listing all note');
-  notes.getAll();
+  var allNotes = notes.getAll();
+  console.log(`printing ${allNotes.length} note(s).`);
+  allNotes.forEach((note) => notes.logNote(note));
 } else if (command === 'read') {
   // console.log('reading note');
   note = notes.getNote(argv.title);

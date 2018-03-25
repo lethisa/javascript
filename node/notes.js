@@ -78,7 +78,7 @@ var addNote = (title, body) => {
 
 ///////////////////////////// list
 var getAll = () => {
-  console.log('getting all notes');
+  return fetchNotes();
 };
 
 ///////////////////////////// remove
