@@ -66,7 +66,15 @@ console.log('command: ', command);
 
 if (command === 'add') {
   // console.log('adding new note');
-  notes.addNote(argv.title, argv.body);
+  var note = notes.addNote(argv.title, argv.body);
+  if (note) {
+    console.log('note created');
+    console.log('--');
+    console.log(`title: ${note.title}`);
+    console.log(`body: ${note.body}`);
+  } else {
+    console.log('note title taken');
+  }
 } else if (command === 'list') {
   // console.log('listing all note');
   notes.getAll();
@@ -75,7 +83,9 @@ if (command === 'add') {
   notes.getNote(argv.title);
 } else if (command === 'remove') {
   // console.log('removing note');
-  notes.removeNote(argv.title);
+  var noteRemoved = notes.removeNote(argv.title);
+  var message = noteRemoved ? 'note was removed' : 'note not found';
+  console.log(message);
 } else {
   console.log('command:  not recognized');
 }
