@@ -25,7 +25,7 @@ asyncAdd(5, 8).then((res) => {
   console.log(errorMessage);
 }).then((res) => {
   console.log('should be:', res);
-}, (errorMessage) => {
+}).catch((errorMessage) => {
   console.log(errorMessage);
 });
 
