@@ -53,10 +53,11 @@ const yargs = require('yargs');
 
 // ============================ MAIN SCRIPT
 // argv => argument vector
-var command = process.argv[2];
+// var command = process.argv[2];
+
 // create yargs var
 const argv = yargs.argv;
-
+var command = argv._[0];
 // get argv - command line argument
 // console.log(process.argv);
 console.log('command: ', command);
