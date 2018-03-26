@@ -6,6 +6,13 @@ const hbs = require('hbs');
 // use express js
 var app = express();
 
+// hbs partials
+hbs.registerPartials(__dirname + '/views/partials');
+// hbs helper
+hbs.registerHelper('getCurrentYear', () => {
+  return new Date().getFullYear();
+});
+
 // use hbs
 app.set('view engine', 'hbs');
 
@@ -15,12 +22,17 @@ app.use(express.static(__dirname + '/public'));
 // http route handler - home
 app.get('/', (req, res) => {
   // res.send('<h1>Hai Express!</h1>');
-  res.send({
-    name: 'lethisa',
-    likes: [
-      'reading',
-      'watching'
-    ]
+  // res.send({
+  //   name: 'lethisa',
+  //   likes: [
+  //     'reading',
+  //     'watching'
+  //   ]
+  // });
+  res.render('home.hbs', {
+    pageTitle: 'Home Page',
+    welcomeMessage: 'Welcome to my website',
+    // currentYear: new Date().getFullYear()
   });
 });
 
@@ -31,7 +43,7 @@ app.get('/about', (req, res) => {
   // render from hbs template
   res.render('about.hbs', {
     pageTitle: 'About Page',
-    currentYear: new Date().getFullYear()
+    // currentYear: new Date().getFullYear()
   });
 });
 
