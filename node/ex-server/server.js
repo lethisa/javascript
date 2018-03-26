@@ -1,13 +1,18 @@
 // load express module
 const express = require('express');
+// load handlebar module
+const hbs = require('hbs');
 
 // use express js
 var app = express();
 
+// use hbs
+app.set('view engine', 'hbs');
+
 // make static web - access folder
 app.use(express.static(__dirname + '/public'));
 
-// http route handler
+// http route handler - home
 app.get('/', (req, res) => {
   // res.send('<h1>Hai Express!</h1>');
   res.send({
@@ -21,7 +26,13 @@ app.get('/', (req, res) => {
 
 // route about
 app.get('/about', (req, res) => {
-  res.send('about page');
+  // res.send('about page');
+
+  // render from hbs template
+  res.render('about.hbs', {
+    pageTitle: 'About Page',
+    currentYear: new Date().getFullYear()
+  });
 });
 
 // bad - send back json with errorMessage
@@ -30,6 +41,9 @@ app.get('/bad', (req, res) => {
     errorMessage: 'unable to handle request'
   });
 });
+
+// template engine
+
 
 // listen server
 app.listen(3000, () => {
