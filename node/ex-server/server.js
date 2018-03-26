@@ -8,14 +8,16 @@ var app = express();
 
 // hbs partials
 hbs.registerPartials(__dirname + '/views/partials');
-// hbs helper
+// hbs helper - get year
 hbs.registerHelper('getCurrentYear', () => {
   return new Date().getFullYear();
 });
-
+// hbs helper - get capitalize
+hbs.registerHelper('screamIt',(text)=>{
+  return text.toUpperCase();
+});
 // use hbs
 app.set('view engine', 'hbs');
-
 // make static web - access folder
 app.use(express.static(__dirname + '/public'));
 
