@@ -4,6 +4,8 @@ const express = require('express');
 const hbs = require('hbs');
 // load fs module
 const fs = require('fs');
+// make constant - port
+const port = process.env.PORT || 3000;
 // use express js
 var app = express();
 // hbs partials
@@ -17,8 +19,8 @@ hbs.registerHelper('screamIt', (text) => {
   return text.toUpperCase();
 });
 // listen server
-app.listen(3000, () => {
-  console.log('server is up on port 3000');
+app.listen(port, () => {
+  console.log(`server is up on port ${port}`);
 });
 
 // ============================================================================
@@ -29,8 +31,14 @@ app.use((req, res, next) => {
   var log = `${now}: ${req.method} ${req.url}`;
 
   console.log(log);
-  fs.appendFile('server.log', log + '\n');
-  next();
+  fs.appendFile('server.log', log + '\n', (err) => {
+    if (err) {
+      console.log('unable to write log');
+    } else {
+      next();
+    }
+  });
+
 });
 
 // middlewear maintenance
