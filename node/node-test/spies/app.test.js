@@ -6,6 +6,7 @@ var app = rewire('./app');
 var db = {
   saveUser: expect.createSpy()
 };
+// rewire
 app.__set__('db', db);
 
 describe('App', () => {
