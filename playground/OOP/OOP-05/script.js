@@ -13,8 +13,8 @@ function interviewQuestion(job) {
       console.log('What subject do you teach, ' + name);
     };
   } else {
-    return function  (name) {
-      console.log('Hello '+ name + 'what do you do?');
+    return function(name) {
+      console.log('Hello ' + name + 'what do you do?');
     };
   }
 }

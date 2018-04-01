@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/lethisa/javascript#readme",
   "dependencies": {
-    "mongodb": "^3.0.5"
+    "mongodb": "^2.2.33"
   }
 }
