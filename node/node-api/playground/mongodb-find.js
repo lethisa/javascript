@@ -1,7 +1,7 @@
 // load mongoDB
 const {
   MongoClient,
-  ObjectID
+
 } = require('mongoDB');
 
 MongoClient.connect('mongodb://localhost:27017/todoApp', (err, db) => {
@@ -10,7 +10,7 @@ MongoClient.connect('mongodb://localhost:27017/todoApp', (err, db) => {
   }
   console.log('connected to mongoDB server');
 
-  // fetch 
+  // fetch
   /*db.collection('todo').find({
     _id: new ObjectID('5ac31f264b1f02ee44b9c997')
   }).toArray().then((docs) => {
