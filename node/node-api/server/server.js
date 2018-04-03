@@ -19,11 +19,13 @@ app.listen(3000, () => {
   console.log('started on port 3000');
 });
 
-//////////////////////////////////////////////////////// body
+//////////////////////////////////////////////////////// POST
 
 app.use(bodyParser.json());
 
 app.post('/todos', (req, res) => {
+
+  console.log(req.body);
 
   var todo = new Todo({
     text: req.body.text
@@ -31,6 +33,18 @@ app.post('/todos', (req, res) => {
 
   todo.save().then((doc) => {
     res.send(doc);
+  }, (e) => {
+    res.status(400).send(e);
+  });
+});
+
+//////////////////////////////////////////////////////// GET
+
+app.get('/todos', (req, res) => {
+  Todo.find().then((todos) => {
+    res.send({
+      todos
+    });
   }, (e) => {
     res.status(400).send(e);
   });
