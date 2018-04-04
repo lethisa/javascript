@@ -4,12 +4,16 @@
   "description": "Node Todo API",
   "main": "index.js",
   "scripts": {
+    "start": "node server/server.js",
     "test": "mocha server/**/*.tests.js --timeout 10000",
     "test-watch": "nodemon --exec \"npm test\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lethisa/javascript.git"
+  },
+  "engine": {
+    "node": "v8.0.0"
   },
   "author": "lethisa",
   "license": "ISC",

@@ -17,10 +17,11 @@ var {
 
 var express = require('express');
 var bodyParser = require('body-parser');
+const port = process.env.PORT || 300;
 
 var app = express();
-app.listen(3000, () => {
-  console.log('started on port 3000');
+app.listen(port, () => {
+  console.log(`started on port ${port}`);
 });
 
 //////////////////////////////////////////////////////// POST
@@ -71,7 +72,9 @@ app.get('/todos/:id', (req, res) => {
       return res.status(404).send();
     }
 
-    res.send({todo});
+    res.send({
+      todo
+    });
   }).catch((e) => {
     res.status(400).send();
     console.log(e);
