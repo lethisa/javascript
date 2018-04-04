@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 // scheme
-var User = mongoose.model('User', {
+var User = mongoose.model('user', {
   email: {
     type: String,
     required: true,
@@ -11,7 +11,7 @@ var User = mongoose.model('User', {
 });
 
 /*var user = new User({
-  email: 'let@gmail.com'
+  email: 'lethisa@gmail.com'
 });
 
 user.save().then((doc) => {

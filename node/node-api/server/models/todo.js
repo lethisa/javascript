@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 // scheme
-var Todo = mongoose.model('Todo', {
+var Todo = mongoose.model('todo', {
   text: {
     type: String,
     required: true,
