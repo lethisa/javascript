@@ -46,7 +46,7 @@ describe('POST /todos', () => {
         if (err) {
           return done(err);
         }
-
+        console.log(res);
         Todo.find({
           text
         }).then((todos) => {
@@ -66,7 +66,7 @@ describe('POST /todos', () => {
         if (err) {
           return done(err);
         }
-
+        console.log(res);
         Todo.find().then((todos) => {
           expect(todos.length).toBe(2);
           done();
