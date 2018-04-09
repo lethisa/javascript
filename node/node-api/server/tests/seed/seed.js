@@ -34,7 +34,7 @@ const users = [{
   tokens: [{
     access: 'auth',
     token: jwt.sign({
-      _id: userOneId,
+      _id: UserTwoId,
       access: 'auth'
     }, 'abc123').toString()
   }]
