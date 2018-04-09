@@ -91,9 +91,7 @@ app.get('/todos', authenticate, (req, res) => {
   Todo.find({
     _creator: req.user._id
   }).then((todos) => {
-    res.send({
-      todos
-    });
+    res.send({todos});
   }, (e) => {
     res.status(400).send(e);
   });
@@ -101,7 +99,7 @@ app.get('/todos', authenticate, (req, res) => {
 
 //////////////////////////////////////////////////////// GET / ID
 
-app.get('/todos/:id', (req, res) => {
+app.get('/todos/:id', authenticate, (req, res) => {
   var id = req.params.id;
   // res.send(req.params);
 
