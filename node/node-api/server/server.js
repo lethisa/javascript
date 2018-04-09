@@ -29,7 +29,7 @@ app.listen(port, () => {
 
 
 
-//////////////////////////////////////////////////////// POST
+//////////////////////////////////////////////////////// POST TODOS
 
 app.use(bodyParser.json());
 
@@ -44,6 +44,22 @@ app.post('/todos', (req, res) => {
   todo.save().then((doc) => {
     res.send(doc);
   }, (e) => {
+    res.status(400).send(e);
+  });
+});
+
+//////////////////////////////////////////////////////// POST USER
+
+app.post('/users', (req, res) => {
+  var body = _.pick(req.body, ['email', 'password']);
+  var user = new User(body);
+
+  user.save().then((user) => {
+    return user.generateAuthToken();
+    // res.send(user);
+  }).then((token) => {
+    res.header('x-auth',token).send(user);
+  }).catch((e) => {
     res.status(400).send(e);
   });
 });
@@ -148,6 +164,7 @@ app.patch('/todos/:id', (req, res) => {
 });
 
 //////////////////////////////////////////////////////// export
+
 module.exports = {
   app
 };
