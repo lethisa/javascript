@@ -18,3 +18,6 @@ if (env === 'development' || env === 'test') {
   process.env.PORT = 3000;
   process.env.MONGODB_URI = 'mongodb://localhost:27017/TodoAppTest';
 }*/
+
+
+// heroku config:set JWT_SECRET=12djsnksbuvisuonldnka
