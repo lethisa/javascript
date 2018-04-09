@@ -17,6 +17,10 @@ var {
   ObjectID
 } = require('mongodb');
 
+var {
+  authenticate
+} = require('./middleware/authenticate');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const port = process.env.PORT;
@@ -58,10 +62,26 @@ app.post('/users', (req, res) => {
     return user.generateAuthToken();
     // res.send(user);
   }).then((token) => {
-    res.header('x-auth',token).send(user);
+    res.header('x-auth', token).send(user);
   }).catch((e) => {
     res.status(400).send(e);
   });
+});
+
+//////////////////////////////////////////////////////// GET USER
+
+app.get('/users/me', authenticate, (req, res) => {
+  // var token = req.header('x-auth');
+  //
+  // User.findByToken(token).then((user) => {
+  //   if (!user) {
+  //     return Promise.reject();
+  //   }
+  //   res.send(user);
+  // }).catch((e) => {
+  //   res.status(401).send(e);
+  // });
+  res.send(req.user);
 });
 
 //////////////////////////////////////////////////////// GET
