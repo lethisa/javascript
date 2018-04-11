@@ -12,6 +12,10 @@ const {
   generateLocationMessage
 } = require('./utils/message');
 
+const {
+  isRealString
+} = require('./utils/validation');
+
 // variable
 var app = express();
 var server = http.createServer(app);
@@ -27,6 +31,14 @@ io.on('connection', (socket) => {
 
   // brodcast info join
   socket.broadcast.emit('newMessage', generateMessage('admin', 'new user joined'));
+
+  // join
+  socket.on('join', (params, callback) => {
+    if (!isRealString(params.name) || !isRealString(params.room)) {
+      callback('name and room are required');
+    }
+    callback();
+  });
 
   // event listener - createMessage
   socket.on('createMessage', (message, callback) => {
