@@ -26,19 +26,26 @@ var io = socketIO(server);
 io.on('connection', (socket) => {
   console.log('new user connected');
 
-  // user join
-  socket.emit('newMessage', generateMessage('admin', 'welcome to chat app'));
-
-  // brodcast info join
-  socket.broadcast.emit('newMessage', generateMessage('admin', 'new user joined'));
-
   // join
   socket.on('join', (params, callback) => {
     if (!isRealString(params.name) || !isRealString(params.room)) {
       callback('name and room are required');
     }
+
+    socket.join(params.room);
+    // socket.leave('room');
+    // io.emit -> io.to('room').emit
+    // socket.broadcast.emit -> socket.broadcast.to('room').emit
+    // socket.emit -> specific user
+
+    // user join
+    socket.emit('newMessage', generateMessage('admin', 'welcome to chat app'));
+    // brodcast info join
+    socket.broadcast.to(params.room).emit('newMessage', generateMessage('admin', `${params.name} has joined`));
     callback();
   });
+
+
 
   // event listener - createMessage
   socket.on('createMessage', (message, callback) => {
